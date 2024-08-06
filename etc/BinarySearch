@@ -1,0 +1,34 @@
+import java.util.Arrays;
+
+public class BinarySearch {
+	static int[] p = {4,1,5,23,2,1,43,56,42,53,44,62};
+	public static void main(String[] args) {
+		System.out.println(Arrays.toString(p));
+		Arrays.sort(p);
+		System.out.println(Arrays.toString(p));
+		Arrays.sort(p);
+		int a = bs(p, 56);
+		System.out.println(a);
+		int b = bs(p, 20);
+		System.out.println(b);
+		int c = Arrays.binarySearch(p, 43);
+		System.out.println(c);
+	}
+	private static int bs(int[] q, int key) {
+		int left = 0;
+		int right = q.length - 1;
+		
+		while(left <= right) {
+			int mid = (left+right)/2;
+			if(q[mid] == key) {
+				return mid;
+			}else if(q[mid] < key) {
+				left = mid + 1;
+			}else {
+				right = mid - 1;
+			}
+		}
+		return -(left+1);
+	}
+
+}
