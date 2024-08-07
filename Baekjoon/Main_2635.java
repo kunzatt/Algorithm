@@ -80,8 +80,7 @@ public class Main_2635 {
 			if(count == max) {
 				break;
 			}
-		}
-		
+		}		
 		// 출력 
 		System.out.println(max);
 		for (int i = 0; i < arr.length; i++) {
