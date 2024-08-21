@@ -52,7 +52,6 @@ public class Solution_10760_우주선착륙2_D2 {
 			}
 			System.out.println("#" + t + " " + count);
 		}
-
 	}
 
 }
