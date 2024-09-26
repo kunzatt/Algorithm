@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-// 원을 그려서 내접, 외접을 모두 따져야 하는 문
+// 원을 그려서 내접, 외접을 모두 따져야 하는 문 
 public class Main_1002 {
 	 
 	public static void main(String[] args) throws IOException {
