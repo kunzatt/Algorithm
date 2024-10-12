@@ -26,7 +26,7 @@ public class Main_1002 {
 		}
  
 	}
- 
+
 	public static int sol(int x1, int y1, int r1, int x2, int y2, int r2) {
     
 		int dis = (int)(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));	 
