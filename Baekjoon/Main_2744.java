@@ -12,6 +12,7 @@ public class Main_2744 {
             char c = s.charAt(i);
             // 대문자면 소문자로 바꾸기
             if (Character.isUpperCase(c)) {
+                
                 sb.append(Character.toLowerCase(c));
             } else {
                 // 소문자면 대문자로 바꾸기
