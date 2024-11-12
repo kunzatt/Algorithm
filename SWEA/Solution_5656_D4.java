@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Solution_5656_벽돌깨기_D4 {
+public class Solution_5656_D4 {
     
     static int N, W, H, min;
     static int[][] map;
