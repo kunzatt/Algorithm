@@ -15,14 +15,14 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
 
         int count = 0;
-        Set<String> arr = new HashSet<>();
+        Set<String> set = new HashSet<>();
 
         for (int i = 0; i < N ; i++) {
-            arr.add(br.readLine());
+            set.add(br.readLine());
         }
 
         for (int i = 0; i < M ; i++) {
-            if(arr.contains(br.readLine())) count++;
+            if(set.contains(br.readLine())) count++;
         }
 
         System.out.println(count);
