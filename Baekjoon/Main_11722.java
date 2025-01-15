@@ -31,6 +31,7 @@ public class Main_11722 {
 		for (int i = 0; i < N; i++) {
 			max = Math.max(max, dec[i]);
 		}
+		
 		System.out.println(max);
 
 	}
