@@ -22,34 +22,30 @@ class Main {
             }
         }
 
-        System.out.println(bfs(0, 0) ? "HaruHaru" : "Hing");
+        System.out.println(dfs(0, 0) ? "HaruHaru" : "Hing");
     }
 
-    private static boolean bfs (int r, int c) {
-        Queue<int[]> que = new LinkedList<>();
-        que.add(new int[] {r, c});
+    private static boolean dfs (int r, int c) {
+        if (r == N - 1 && c == N - 1) {
+            return true;
+        }
+
         visited[r][c] = true;
+        int num = map[r][c];
 
-        while (!que.isEmpty()) {
-            int[] temp = que.poll();
-            int num = map[temp[0]][temp[1]];
+        for (int d = 0; d < 2; d++) {
+            int nr = r + dr[d] * num;
+            int nc = c + dc[d] * num;
 
-            for (int d = 0; d < 2; d++) {
-                int nr = temp[0] + dr[d] * num;
-                int nc = temp[1] + dc[d] * num;
-
-                if (nr == N - 1 && nc == N - 1) {
+            if (check(nr, nc) && !visited[nr][nc]) {
+                if (dfs(nr, nc)) {
                     return true;
                 }
-                if (!check(nr, nc) || visited[nr][nc]) continue;
-                visited[nr][nc] = true;
-                que.add(new int[] {nr, nc});
             }
         }
 
         return false;
-
-    } 
+    }
 
     private static boolean check (int r, int c) {
         return r >= 0 && c >= 0 && r < N && c < N;
