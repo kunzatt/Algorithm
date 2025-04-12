@@ -13,11 +13,9 @@ class Solution {
             sum += people[idx];
             if (sum > limit) {
                 count++;
-                continue;
             } else {
                 idx++;
                 count++;
-                continue;
             }
         }
         
