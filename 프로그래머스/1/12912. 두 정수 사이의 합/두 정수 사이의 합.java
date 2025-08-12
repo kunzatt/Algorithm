@@ -1,18 +1,9 @@
 class Solution {
     public long solution(int a, int b) {
-        long ans = 0;
-        if (a < b) {
-            for (int i = a; i <= b; i++) {
-                ans += i;
-            }
-            return ans;
-        } else if (b < a) {
-            for (int i = b; i <= a; i++) {
-                ans += i;
-            }
-            return ans;
-        } else {
-            return a;
-        }
+        return sumAtoB(Math.min(a, b), Math.max(b, a));
+    }
+    
+    private long sumAtoB(long a, long b) {
+        return (a + b) * (b - a + 1) / 2;
     }
 }
