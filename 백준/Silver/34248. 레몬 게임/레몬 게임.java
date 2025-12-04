@@ -2,54 +2,35 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int n;
-    static int[] a;
-    static int[][] memo;
-    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        n = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
         
-        a = new int[n];
+        int ones = 0, twos = 0;
         for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(st.nextToken());
+            int x = Integer.parseInt(st.nextToken());
+            if (x == 1) ones++;
+            else twos++;
         }
         
-        memo = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(memo[i], -1);
-        }
+        int total = ones + 2 * twos;
         
-        if (solve(0, n - 1)) {
-            System.out.println("Yes");
-        } else {
+        if (total % 3 != 0) {
             System.out.println("No");
-        }
-    }
-    
-    static boolean solve(int l, int r) {
-        if (l > r) return true;
-        if (memo[l][r] != -1) return memo[l][r] == 1;
-        
-        int sum = 0;
-        for (int i = l; i <= r; i++) {
-            sum += a[i];
+            return;
         }
         
-        if (sum == 3) {
-            memo[l][r] = 1;
-            return true;
+        if (ones < twos) {
+            System.out.println("No");
+            return;
         }
         
-        for (int k = l; k < r; k++) {
-            if (solve(l, k) && solve(k + 1, r)) {
-                memo[l][r] = 1;
-                return true;
-            }
+        if ((ones - twos) % 3 != 0) {
+            System.out.println("No");
+            return;
         }
         
-        memo[l][r] = 0;
-        return false;
+        System.out.println("Yes");
     }
 }
