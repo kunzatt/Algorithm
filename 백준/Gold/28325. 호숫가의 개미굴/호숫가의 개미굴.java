@@ -6,65 +6,43 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] c = new int[n];
-        boolean[] s = new boolean[n];
+        long[] list = new long[n];
+        boolean flag = false;
         
         for (int i = 0; i < n; i++) {
-            c[i] = Integer.parseInt(st.nextToken());
-            if (c[i] != 0) s[i] = true;
+            list[i] = Long.parseLong(st.nextToken());
+            flag |= (list[i] > 0);
         }
         
-        boolean h = false;
+        if (!flag) {
+            System.out.println(n >> 1);
+            return;
+        }
+        
+        long ret = 0;
+        long cnt = 0;
+        long tmp = 0;
+        boolean isFirst = true;
+        
         for (int i = 0; i < n; i++) {
-            if (s[i]) {
-                h = true;
-                break;
-            }
-        }
-        
-        if (!h) {
-            System.out.println(n / 2);
-        } else {
-            int[] m = new int[n];
-            for (int i = 0; i < n; i++) m[i] = -1;
-            int cnt = 0;
-            
-            for (int i = 0; i < n; i++) {
-                if (s[i]) {
-                    cnt += c[i];
-                    m[i] = 0;
-                }
-            }
-            
-            if (n == 2) {
-                int sp = 0;
-                for (int i = 0; i < n; i++) {
-                    if (s[i]) sp++;
-                }
-                if (sp == 1) cnt++;
-                System.out.println(cnt);
+            if (list[i] == 0) {
+                cnt++;
             } else {
-                int idx = 0;
-                for (int i = 0; i < n; i++) {
-                    if (s[i]) {
-                        idx = i;
-                        break;
-                    }
-                }
-                
-                for (int i = idx; i < n + idx; i++) {
-                    int cur = i % n;
-                    if (m[cur] == -1) {
-                        int l = (i - 1 + n) % n;
-                        int r = (i + 1) % n;
-                        if (m[l] != 1 && m[r] != 1) {
-                            m[cur] = 1;
-                            cnt++;
-                        }
-                    }
-                }
-                System.out.println(cnt);
+                if (isFirst) tmp = cnt;
+                ret += list[i];
+                isFirst = false;
+                ret += ((cnt + 1L) >> 1);
+                cnt = 0;
             }
         }
+        
+        if (list[0] == 0 && list[n - 1] == 0) {
+            ret -= ((tmp + 1L) >> 1);
+            ret += ((tmp + cnt + 1L) >> 1);
+        } else {
+            ret += ((cnt + 1L) >> 1);
+        }
+        
+        System.out.println(ret);
     }
 }
